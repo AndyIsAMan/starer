@@ -1,2 +1,3 @@
 # starer
 慕课网SpringSecurity+oauth2打造企业级认证和授权项目代码1
+这可能是其中的一个项目以后可能还会有其他的项目
