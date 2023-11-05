@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Spirngmvc
+ * Spirngmvc对资源的配置
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -23,6 +23,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/").setViewName("index"); // 设置登录成功后跳转的页面
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }

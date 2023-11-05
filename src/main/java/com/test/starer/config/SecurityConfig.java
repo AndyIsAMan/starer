@@ -26,14 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf(csrf->csrf.disable())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(form->form.loginPage("/login").permitAll())
-                .authorizeRequests(req->req.anyRequest().authenticated()); // 对api路径下的所有请求进行认证
+                .authorizeRequests(req->req.anyRequest().authenticated())
+                .logout(logout->logout.logoutUrl("/perform_logout"))
+                .rememberMe(remeberMe->remeberMe.tokenValiditySeconds(30 * 24 *2600).rememberMeCookieName("someKeyRemeber")); // 对api路径下的所有请求进行认证
 
     }
 
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().mvcMatchers("/public/**")
+        web.ignoring().mvcMatchers("/public/**", "/error")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()); // 这行代码的配置是如果访问public目录下的资源是不会走SpringSecurity的过滤器链的
     }
 }
