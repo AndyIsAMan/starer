@@ -3,10 +3,10 @@ server:
 spring:
   name: uaa
   ## 配置Springboot集成SpringSecurity测试环境时候每次从登录表单输入用户名密码的账号和密码 这样不用每次从日志里找密码
-  security:
-    user:
-      name: user
-      password: 123456
+#  security:
+#    user:
+#      name: user
+#      password: 123456
 #      roles: USER,ADMIN
   messages:
     basename: messages
