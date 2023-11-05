@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  name: uaa
+  ## 配置Springboot集成SpringSecurity测试环境时候每次从登录表单输入用户名密码的账号和密码 这样不用每次从日志里找密码
+  security:
+    user:
+      name: user
+      password: 123456
+#      roles: USER,ADMIN
+  messages:
+    basename: messages
+    encoding: UTF-8
+  thymeleaf:
+    encoding: UTF-8
+  webjars:
+    prefix: /webjars
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+logging:
+  level:
+    org.springframework.security: DEBUG # 对指定包下打印debug日志 这个对看源码很有帮助
+  pattern:
+    console: '%clr(%d{E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint}
+                  %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n' # ????????????
