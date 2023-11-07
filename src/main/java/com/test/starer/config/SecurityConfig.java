@@ -15,7 +15,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -98,6 +97,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        // auth.inMemoryAuthentication
+        // 表示是基于内存的配置(其实内部是维护了一个map集合) 他会把你配置的用户名角色和密码保存到org.springframework.security.provisioning.InMemoryUserDetailsManager.InMemoryUserDetailsManager(java.util.Collection<org.springframework.security.core.userdetails.UserDetails>)里边的this.createUser(user);这行
         auth.inMemoryAuthentication()
                 .withUser("user")
 //                .password(passwordEncoder().encode("123456"))
